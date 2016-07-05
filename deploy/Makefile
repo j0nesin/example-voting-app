@@ -26,9 +26,3 @@ deploy-delete:
 	
 monitoring:
 	open https://app.google.stackdriver.com/gke
-
-# todo:
-#	- persistent disk
-#	- default error page
-#	- backup verification
-#	- outage notification
