@@ -1,4 +1,4 @@
-.PHONY: build push deploy-initial deploy
+.PHONY: build push deploy deploy-delete monitor
 
 REGISTRY = us.gcr.io/voting-appp
 TAG = latest
@@ -24,5 +24,5 @@ deploy-delete:
 #	kubectl delete -f k8s/deployment.yaml
 	sed 's/<IMAGE_TAG>/$(TAG)/g' k8s/deployment.yaml | kubectl delete -f -
 	
-monitoring:
+monitor:
 	open https://app.google.stackdriver.com/gke
