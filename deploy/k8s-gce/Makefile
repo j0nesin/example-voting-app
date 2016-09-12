@@ -6,9 +6,9 @@ CLUSTER ?= voting-app
 PROXY_PORT ?= 8011
 
 build:
-	cd ../vote && docker build -t $(REGISTRY)/examplevotingapp_vote:$(TAG) .
-	cd ../worker && docker build -t $(REGISTRY)/examplevotingapp_worker:$(TAG) .
-	cd ../result && docker build -t $(REGISTRY)/examplevotingapp_result:$(TAG) .
+	cd ../../vote && docker build -t $(REGISTRY)/examplevotingapp_vote:$(TAG) .
+	cd ../../worker && docker build -t $(REGISTRY)/examplevotingapp_worker:$(TAG) .
+	cd ../../result && docker build -t $(REGISTRY)/examplevotingapp_result:$(TAG) .
 
 push:
 	gcloud docker push $(REGISTRY)/examplevotingapp_vote:$(TAG)
@@ -19,10 +19,10 @@ deploy-login:
 	gcloud container clusters get-credentials $(CLUSTER)
 
 deploy:
-	sed 's/<IMAGE_TAG>/$(TAG)/g' k8s/deployment.yaml | kubectl apply -f -
+	sed 's|<REGISTRY>|$(REGISTRY)|g;s|<IMAGE_TAG>|$(TAG)|g' deployment.yaml | kubectl apply -f -
 
 deploy-delete:
-	sed 's/<IMAGE_TAG>/$(TAG)/g' k8s/deployment.yaml | kubectl delete -f -
+	sed 's|<REGISTRY>|$(REGISTRY)|g;s|<IMAGE_TAG>|$(TAG)|g' deployment.yaml | kubectl delete -f -
 
 proxy:
 	kubectl proxy --port $(PROXY_PORT)

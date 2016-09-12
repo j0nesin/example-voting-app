@@ -108,7 +108,7 @@ spec:
     spec:
       containers:
       - name: vote
-        image: us.gcr.io/voting-appp/examplevotingapp_vote:<IMAGE_TAG>
+        image: <REGISTRY>/examplevotingapp_vote:<IMAGE_TAG>
         resources:
           requests:
             cpu: 100m
@@ -135,7 +135,7 @@ spec:
     spec:
       containers:
       - name: worker
-        image: us.gcr.io/voting-appp/examplevotingapp_worker:<IMAGE_TAG>
+        image: <REGISTRY>/examplevotingapp_worker:<IMAGE_TAG>
         resources:
           requests:
             cpu: 100m
@@ -168,7 +168,7 @@ spec:
     spec:
       containers:
       - name: result
-        image: us.gcr.io/voting-appp/examplevotingapp_result:<IMAGE_TAG>
+        image: <REGISTRY>/examplevotingapp_result:<IMAGE_TAG>
         resources:
           requests:
             cpu: 100m
