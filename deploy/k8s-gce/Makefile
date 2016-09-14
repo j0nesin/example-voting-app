@@ -2,7 +2,7 @@
 
 REGISTRY ?= us.gcr.io/voting-appp
 TAG ?= latest
-CLUSTER ?= voting-app
+CLUSTER ?= voting-aapp
 PROXY_PORT ?= 8011
 
 build:
