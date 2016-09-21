@@ -6,9 +6,9 @@ CLUSTER ?= voting-aapp
 PROXY_PORT ?= 8011
 
 build:
-	cd ../../vote && docker build -t $(REGISTRY)/examplevotingapp_vote:$(TAG) .
-	cd ../../worker && docker build -t $(REGISTRY)/examplevotingapp_worker:$(TAG) .
-	cd ../../result && docker build -t $(REGISTRY)/examplevotingapp_result:$(TAG) .
+	docker build -t $(REGISTRY)/examplevotingapp_vote:$(TAG) ../../vote
+	docker build -t $(REGISTRY)/examplevotingapp_worker:$(TAG) ../../worker
+	docker build -t $(REGISTRY)/examplevotingapp_result:$(TAG) ../../result
 
 push:
 	gcloud docker push $(REGISTRY)/examplevotingapp_vote:$(TAG)
